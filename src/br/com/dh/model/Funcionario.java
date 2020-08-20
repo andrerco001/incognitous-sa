@@ -2,23 +2,63 @@ package br.com.dh.model;
 
 import java.time.LocalDate;
 
-public class Funcionario extends Pessoa {
-	
-	private String setor;
-	private LocalDate dataDeAdmissao;
-	private LocalDate dataDeDemissao;
-	private double salarioBase;
-	
+public abstract class Funcionario {
+
+	protected int id;
+	protected String nome;
+	protected String email;
+	protected String endereco;
+	protected String setor;
+	protected LocalDate dataDeAdmissao;
+	protected LocalDate dataDeDemissao;
+	protected double salarioBase;
+
 	public Funcionario() {
-	
+
 	}
-	
-	public Funcionario(String nome, String email, String endereco, String setor, LocalDate dataDeAdmissao, LocalDate dataDeDemissao, double salarioBase) {
-		super(nome, email, endereco);
+
+	public Funcionario(int id, String nome, String email, String endereco, String setor, LocalDate dataDeAdmissao,
+			LocalDate dataDeDemissao, double salarioBase) {
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.endereco = endereco;
 		this.setor = setor;
 		this.dataDeAdmissao = dataDeAdmissao;
 		this.dataDeDemissao = dataDeDemissao;
 		this.salarioBase = salarioBase;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
 	public String getSetor() {
@@ -55,15 +95,16 @@ public class Funcionario extends Pessoa {
 
 	@Override
 	public String toString() {
-		return "Funcionario [setor=" + setor + ", dataDeAdmissao=" + dataDeAdmissao + ", dataDeDemissao="
-				+ dataDeDemissao + ", salarioBase=" + salarioBase + "]";
+		return "Funcionario [id=" + id + ", nome=" + nome + ", email=" + email + ", endereco=" + endereco + ", setor="
+				+ setor + ", dataDeAdmissao=" + dataDeAdmissao + ", dataDeDemissao=" + dataDeDemissao + ", salarioBase="
+				+ salarioBase + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + ((setor == null) ? 0 : setor.hashCode());
+		int result = 1;
+		result = prime * result + id;
 		return result;
 	}
 
@@ -71,17 +112,14 @@ public class Funcionario extends Pessoa {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj))
+		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Funcionario other = (Funcionario) obj;
-		if (setor == null) {
-			if (other.setor != null)
-				return false;
-		} else if (!setor.equals(other.setor))
+		if (id != other.id)
 			return false;
 		return true;
 	}
-
+	
 }
