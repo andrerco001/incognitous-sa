@@ -1,9 +1,11 @@
 package br.com.dh.model;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public abstract class Funcionario {
 
+	// atributos
 	protected int id;
 	protected String nome;
 	protected String email;
@@ -13,6 +15,7 @@ public abstract class Funcionario {
 	protected LocalDate dataDeDemissao;
 	protected double salarioBase;
 
+	// métodos construtores
 	public Funcionario() {
 
 	}
@@ -28,7 +31,8 @@ public abstract class Funcionario {
 		this.dataDeDemissao = dataDeDemissao;
 		this.salarioBase = salarioBase;
 	}
-	
+
+	// métodos getters e setters
 	public int getId() {
 		return id;
 	}
@@ -93,6 +97,58 @@ public abstract class Funcionario {
 		this.salarioBase = salarioBase;
 	}
 
+	// métodos
+	public void consultarContrachque() {
+
+		System.out.println("################ Contra-cheque ################");
+		System.out.println("Funcionario [id=" + id + ", nome=" + nome + ", setor=" + setor + ", dataDeAdmissao="
+				+ dataDeAdmissao + ", dataDeDemissao=" + dataDeDemissao + ", salarioBase=" + salarioBase + "]");
+		System.out.println("################################################");
+	}
+
+	public void requisitarFerias() {
+
+		LocalDate dataAtual = LocalDate.now();
+
+		if (ChronoUnit.MONTHS.between(dataDeAdmissao, dataAtual) >= 11) {
+			System.out.println("Suas férias foram aprovadas.");
+		}
+
+	}
+
+	public void trabalhar() {
+
+		LocalDate diaDeTrabalho = LocalDate.now();
+		System.out.println("O funcionário " + this.nome + ", id " + this.id + " trabalhará no dia " + diaDeTrabalho);
+	}
+
+	public void pedirDemissao() {
+
+		LocalDate diaDeDemissao = LocalDate.now();
+		System.out.println(
+				"O funcionário " + this.nome + ", id " + this.id + " solicita sua demissao em " + diaDeDemissao);
+
+		this.dataDeDemissao = diaDeDemissao;
+	}
+
+	public void solicitarAumento() {
+
+		int resposta = (int) Math.floor(Math.random() * 10);
+
+		if (resposta % 2 == 0) {
+			System.out.println("O aumento salarial solicitado pelo funcionario " + this.nome + ", id " + this.id
+					+ " foi aprovado.");
+		} else {
+			System.out.println(
+					"O aumento salarial solicitado pelo funcionario " + this.nome + ", id " + this.id + " foi negado.");
+		}
+	}
+
+	public void funcionarioEmFeriasNaoPodeTrabalhar() {
+
+		System.out.println("Os funcionários em férias não podem trabalhar");
+	}
+
 	@Override
 	public String toString() {
 		return "Funcionario [id=" + id + ", nome=" + nome + ", email=" + email + ", endereco=" + endereco + ", setor="
@@ -121,5 +177,5 @@ public abstract class Funcionario {
 			return false;
 		return true;
 	}
-	
+
 }

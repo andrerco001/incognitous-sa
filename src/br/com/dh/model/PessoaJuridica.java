@@ -4,8 +4,10 @@ import java.time.LocalDate;
 
 public class PessoaJuridica extends Funcionario {
 
+	// atributos
 	private String cnpj;
 
+	// Métodos construtores
 	public PessoaJuridica() {
 
 	}
@@ -16,6 +18,7 @@ public class PessoaJuridica extends Funcionario {
 		this.cnpj = cnpj;
 	}
 
+	// métodos getters e setters
 	public String getCnpj() {
 		return cnpj;
 	}
@@ -24,6 +27,7 @@ public class PessoaJuridica extends Funcionario {
 		this.cnpj = cnpj;
 	}
 
+	// métodos
 	@Override
 	public String toString() {
 		return "PessoaJuridica [id=" + id + ", nome=" + nome + ", email=" + email + ", endereco=" + endereco

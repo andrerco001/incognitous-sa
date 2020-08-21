@@ -4,10 +4,12 @@ import java.time.LocalDate;
 
 public class PessoaFisica extends Funcionario {
 	
+	// atributos
 	private int nit;
 	private String cpf;
 	private TipoFuncionario cargo;
 	
+	// métodos construtores
 	public PessoaFisica() {
 		
 	}
@@ -20,6 +22,7 @@ public class PessoaFisica extends Funcionario {
 		this.cargo = cargo;
 	}
 
+	// métodos getters e setters
 	public int getNit() {
 		return nit;
 	}
@@ -43,7 +46,8 @@ public class PessoaFisica extends Funcionario {
 	public void setCargo(TipoFuncionario cargo) {
 		this.cargo = cargo;
 	}
-
+	
+	// métodos
 	@Override
 	public String toString() {
 		return "PessoaFisica [id=" + id + ", nome=" + nome + ", email=" + email + ", endereco=" + endereco + 
